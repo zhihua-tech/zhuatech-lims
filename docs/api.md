@@ -9,3 +9,4 @@
 | GET | `/api/admin/work-orders` | 检测任务清单 |
 | GET | `/api/shopfloor/dashboard` | 工程师任务工作台 |
 | POST | `/api/shopfloor/work-orders/{id}/reports` | 提交检测结果 |
+| POST | `/api/admin/batch-release` | 判断样本检测批次是否可放行 |
