@@ -87,3 +87,7 @@ docker compose up --build
 | ![微信咨询二维码 1](docs/images/zhuatech-wechat-consulting.png) | ![微信咨询二维码 2](docs/images/zhuatech-wechat-consulting-2.png) |
 
 SEO：LIMS 源码、实验室信息管理系统、样品管理系统、检测管理软件、实验室数字化、Java LIMS、Vue LIMS、知华科技、上海如静知华信息科技有限公司。
+
+## 样本稳定性门禁
+
+新增 `POST /api/lims/insights/sample-stability`，检查样本时龄、稳定性窗口、存储偏离和交接链，输出 `ACCEPT`、`HOLD` 或 `RECOLLECT`。
