@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.lims.service;
 import cn.zhuatech.lims.common.BusinessException; import cn.zhuatech.lims.dto.LimsDto.*; import cn.zhuatech.lims.model.*; import cn.zhuatech.lims.repository.*; import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import java.util.*;
 @Service @Transactional(readOnly=true) public class LimsService {

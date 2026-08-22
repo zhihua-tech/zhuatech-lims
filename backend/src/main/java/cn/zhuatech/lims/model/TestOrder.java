@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.lims.model;
 import jakarta.persistence.*; import java.time.LocalDate;
 @Entity @Table(name="lims_test_order") public class TestOrder extends BaseEntity {

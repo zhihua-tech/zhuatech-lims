@@ -1,4 +1,4 @@
--- Copyright 2026 上海如静知华信息科技有限公司
+-- Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/
 CREATE TABLE lims_laboratory (id BIGINT AUTO_INCREMENT PRIMARY KEY,code VARCHAR(32) NOT NULL UNIQUE,name VARCHAR(80) NOT NULL,workshop VARCHAR(60) NOT NULL,planned_capacity INT NOT NULL,active BOOLEAN NOT NULL,created_at DATETIME(6) NOT NULL,updated_at DATETIME(6) NOT NULL);
 CREATE TABLE lims_user (id BIGINT AUTO_INCREMENT PRIMARY KEY,username VARCHAR(32) NOT NULL UNIQUE,password VARCHAR(255) NOT NULL,full_name VARCHAR(50) NOT NULL,role VARCHAR(20) NOT NULL,laboratory_code VARCHAR(32),enabled BOOLEAN NOT NULL,created_at DATETIME(6) NOT NULL,updated_at DATETIME(6) NOT NULL);
 CREATE TABLE lims_test_order (id BIGINT AUTO_INCREMENT PRIMARY KEY,order_no VARCHAR(32) NOT NULL UNIQUE,product_code VARCHAR(40) NOT NULL,product_name VARCHAR(120) NOT NULL,laboratory_id BIGINT NOT NULL,planned_qty INT NOT NULL,completed_qty INT NOT NULL,defect_qty INT NOT NULL,due_date DATE NOT NULL,status VARCHAR(20) NOT NULL,batch_no VARCHAR(40),created_at DATETIME(6) NOT NULL,updated_at DATETIME(6) NOT NULL,CONSTRAINT fk_order_center FOREIGN KEY(laboratory_id) REFERENCES lims_laboratory(id));

@@ -1,3 +1,3 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.lims.controller; import cn.zhuatech.lims.common.ApiResponse; import cn.zhuatech.lims.dto.LimsDto.*; import cn.zhuatech.lims.service.LimsService; import org.springframework.security.access.prepost.PreAuthorize; import org.springframework.web.bind.annotation.*; import java.util.List;
 @RestController @RequestMapping("/api/admin") @PreAuthorize("hasAnyRole('LAB_MANAGER','QUALITY','ADMIN')") public class LaboratoryAdminController {private final LimsService lims;public LaboratoryAdminController(LimsService lims){this.lims=lims;}@GetMapping("/dashboard") public ApiResponse<Dashboard> dashboard(){return ApiResponse.ok(lims.adminDashboard());}@GetMapping("/work-orders") public ApiResponse<List<TestOrderView>> orders(){return ApiResponse.ok(lims.testOrders());}}
