@@ -1,14 +1,41 @@
 /* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.lims.service;
 import cn.zhuatech.lims.common.BusinessException; import cn.zhuatech.lims.dto.LimsDto.*; import cn.zhuatech.lims.model.*; import cn.zhuatech.lims.repository.*; import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service @Transactional(readOnly=true) public class LimsService {
     private final TestOrderRepository orders; private final TestResultRepository reports; private final InstrumentRepository instrument; private final SampleRepository samples; private final CurrentUserService current;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public LimsService(TestOrderRepository orders,TestResultRepository reports,InstrumentRepository instrument,SampleRepository samples,CurrentUserService current){this.orders=orders;this.reports=reports;this.instrument=instrument;this.samples=samples;this.current=current;}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Dashboard shopfloorDashboard(){String center=current.get().getLaboratoryCode();List<TestOrder> list=center==null?orders.findAllByOrderByDueDateAsc():orders.findByLaboratoryCodeOrderByDueDateAsc(center);return dashboard(list);}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Dashboard adminDashboard(){return dashboard(orders.findAllByOrderByDueDateAsc());}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public List<TestOrderView> testOrders(){return orders.findAllByOrderByDueDateAsc().stream().map(this::view).toList();}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Transactional public ReportResult report(Long id,ReportRequest request){TestOrder order=orders.findById(id).orElseThrow(()->new BusinessException("检测任务不存在"));if(order.getStatus()==TestOrder.Status.COMPLETED)throw new BusinessException("已完成任务不能继续反馈");if(order.getCompletedQty()+request.goodQty()>order.getPlannedQty())throw new BusinessException("完成数量不能超过任务剩余数量");order.report(request.goodQty(),request.defectQty());reports.save(new TestResult(order,request.operationName(),request.goodQty(),request.defectQty(),current.get().getFullName(),request.remark()));return new ReportResult(order.getOrderNo(),order.getCompletedQty(),order.getDefectQty(),progress(order),order.getStatus().name());}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private Dashboard dashboard(List<TestOrder> list){int planned=list.stream().mapToInt(TestOrder::getPlannedQty).sum(),done=list.stream().mapToInt(TestOrder::getCompletedQty).sum(),defects=list.stream().mapToInt(TestOrder::getDefectQty).sum();int rate=planned==0?0:Math.round(done*100f/planned);List<Metric> metrics=List.of(new Metric("今日检测",String.format("%,d",planned),list.size()+" 张检测任务","blue"),new Metric("检测完成率",rate+"%",String.format("%,d / %,d",done,planned),"green"),new Metric("结果合规率",String.format("%.1f%%",done+defects==0?100d:done*100d/(done+defects)),defects+" 项异常","warn"),new Metric("仪器异常",instrument.countByStatus(Instrument.Status.ALARM)+"",samples.countByResult(Sample.Result.PENDING)+" 项待复核","red"));return new Dashboard(metrics,list.stream().map(this::view).toList(),instrument.findAllByOrderByCodeAsc().stream().map(e->new InstrumentView(e.getCode(),e.getName(),e.getLaboratory().getName(),e.getStatus().name(),e.getOee(),e.getLastHeartbeat())).toList(),samples.findTop10ByOrderByIdDesc().stream().map(i->new SampleView(i.getSampleNo(),i.getTestOrder().getOrderNo(),i.getTestOrder().getProductName(),i.getSampleType(),i.getSampleQty(),i.getDefectQty(),i.getResult().name(),i.getInspector())).toList());}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private TestOrderView view(TestOrder o){return new TestOrderView(o.getId(),o.getOrderNo(),o.getProductCode(),o.getProductName(),o.getLaboratory().getName(),o.getLaboratory().getWorkshop(),o.getPlannedQty(),o.getCompletedQty(),o.getDefectQty(),o.getDueDate(),o.getStatus().name(),o.getBatchNo(),progress(o));}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private int progress(TestOrder o){return o.getPlannedQty()==0?0:Math.min(100,Math.round(o.getCompletedQty()*100f/o.getPlannedQty()));}
 }

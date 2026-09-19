@@ -4,8 +4,14 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class DataIntegrityReleaseService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result evaluate(Request request) {
         List<String> blockers = new ArrayList<>();
         if (!request.rawDataLinked()) blockers.add("检验结果未关联原始数据");
@@ -19,12 +25,21 @@ public class DataIntegrityReleaseService {
         return new Result(request.sampleNo(), decision, alcoaScore, blockers.isEmpty(),
                 List.copyOf(blockers), List.of("ATTRIBUTABLE", "LEGIBLE", "CONTEMPORANEOUS", "ORIGINAL", "ACCURATE"));
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String sampleNo, boolean rawDataLinked,
                           boolean auditTrailReviewed, boolean analystQualified,
                           boolean openOos, boolean chainOfCustodyComplete,
                           boolean secondReviewerApproved) {
+        /**
+         * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+         */
         public Request { if (sampleNo == null || sampleNo.isBlank()) throw new IllegalArgumentException("sampleNo is required"); }
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String sampleNo, String decision, int alcoaScore,
                          boolean reportReleaseAllowed, List<String> blockers, List<String> principlesChecked) {}
 }
