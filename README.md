@@ -1,5 +1,7 @@
 # ZhuaTech LIMS｜知华科技实验室信息管理系统
 
+[简体中文](README.md) | [English](README.en.md)
+
 ## 企业级数据完整性与报告放行
 
 新增 ALCOA+、原始数据、审计追踪、OOS、样品交接链和双人复核控制，详见 [实验室数据完整性](docs/ENTERPRISE_DATA_INTEGRITY.md)。
