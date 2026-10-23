@@ -1,0 +1,58 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "requiredMl": "#40",
+      "remainingMl": "#10",
+      "daysToExpiry": "#9"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "samples": "26"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "shortfallMl": "#2"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "expires": "2026-10-22"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "expires": "2026-10-23"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "released": "NO"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "samples": "0"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  }
+]
