@@ -8,7 +8,7 @@ Results are **read-only decision support**, not approvals or posted transactions
 
 # ZhuaTech Laboratory Information Management System
 
-> A source-available enterprise project by [ZhuaTech](https://www.zhuatech.cn/) for healthcare, clinical, and laboratory information management.
+> A source-available enterprise project by [ZhuaTech](https://www.zhuatech.cn/en.html) for healthcare, clinical, and laboratory information management.
 
 ZhuaTech Laboratory Information Management System provides a practical, self-hosted foundation for healthcare, clinical, and laboratory information management. It is designed for healthcare institutions, laboratories, clinical teams, and authorized operators, with clear business records, controlled workflows, operational visibility, and auditable actions.
 
@@ -97,8 +97,8 @@ For commercial licensing, private deployment, enterprise customization, software
 - Email: [han@zhuatech.cn](mailto:han@zhuatech.cn)
 - Email: [jack@zhuatech.cn](mailto:jack@zhuatech.cn)
 - [WhatsApp: +86 17521234993](https://wa.me/8617521234993)
-- Website: [https://www.zhuatech.cn/](https://www.zhuatech.cn/)
+- Website: [https://www.zhuatech.cn/en.html](https://www.zhuatech.cn/en.html)
 
 ## About ZhuaTech
 
-[ZhuaTech](https://www.zhuatech.cn/) is operated by Shanghai Rujing Zhihua Information Technology Co., Ltd. We support small and medium-sized enterprises with digital transformation, AI adoption, enterprise software implementation, custom development, software project outsourcing, FDE services, OPC integration, and long-term technical support.
+[ZhuaTech](https://www.zhuatech.cn/en.html) is operated by Shanghai Rujing Zhihua Information Technology Co., Ltd. We support small and medium-sized enterprises with digital transformation, AI adoption, enterprise software implementation, custom development, software project outsourcing, FDE services, OPC integration, and long-term technical support.
